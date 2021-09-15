@@ -1,10 +1,17 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-import Card from "../ui/Card";
+import Slider from "react-slick";
+
+import CardUi from "../ui/CardUi";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { Container } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,13 +37,56 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 300,
   },
   cardContainer: {
-    display: "flex",
-    justifyContent: "space-between",
+    width: "80%",
+  },
+  arrowNext: {
+    color: "white",
+    position: "absolute",
+    cursor: "pointer",
+    top: "50%",
+    right: "-5%",
+    zIndex: 1600,
+  },
+  arrowPrev: {
+    color: "white",
+    position: "absolute",
+    cursor: "pointer",
+    top: "50%",
+    left: "-5%",
+    zIndex: 1600,
   },
 }));
 
 export default function HomeCard() {
   const classes = useStyles();
+
+  const cardInfo = useSelector((state) => state.data.roomsInfo);
+
+  const NextArrow = ({ onClick }) => {
+    return (
+      <div className={classes.arrowNext} onClick={onClick}>
+        <ArrowForwardIosIcon />
+      </div>
+    );
+  };
+
+  const PrevArrow = ({ onClick }) => {
+    return (
+      <div className={classes.arrowPrev} onClick={onClick}>
+        <ArrowBackIosIcon />
+      </div>
+    );
+  };
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+  };
 
   return (
     <>
@@ -52,11 +102,21 @@ export default function HomeCard() {
             exclusive destinations across Europe.
           </Typography>
         </div>
-        <Container className={classes.cardContainer}>
-          <Card />
-          <Card />
-          <Card />
-        </Container>
+        <div className={classes.cardContainer}>
+          <Slider {...settings}>
+            {cardInfo.map((item, index) => (
+              <CardUi
+                key={index}
+                name={item.name}
+                number={item.number}
+                size={item.size}
+                view={item.view}
+                price={item.price}
+                img={item.img}
+              />
+            ))}
+          </Slider>
+        </div>
       </div>
     </>
   );

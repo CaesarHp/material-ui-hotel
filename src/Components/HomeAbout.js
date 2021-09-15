@@ -1,6 +1,6 @@
 import React from "react";
 
-import hotelImg from "../img/hotel-card-1.jpg";
+import hotelImg from "../img/suite.jpg";
 
 import { Container } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
