@@ -27,13 +27,13 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(5),
   },
   title: {
-    color: "white",
+    color: theme.palette.grey[200],
     marginBottom: theme.spacing(3),
     fontFamily: "Cormorant Garamond",
     fontWeight: 500,
   },
   body: {
-    color: "white",
+    color: theme.palette.grey[300],
     fontWeight: 300,
   },
   cardContainer: {

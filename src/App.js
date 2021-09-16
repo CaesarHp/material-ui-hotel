@@ -5,6 +5,9 @@ import Theme from "./ui/Theme";
 
 import Layout from "./ui/Layout";
 import Home from "./Pages/Home";
+import Booking from "./Pages/Booking";
+import Contact from "./Pages/Contact";
+import NotFound from "./Pages/NotFound";
 
 function App() {
   return (
@@ -18,9 +21,15 @@ function App() {
             <Route path="/home">
               <Home />
             </Route>
-            <Route path="/booking">Booking</Route>
-            <Route path="/contact">Contact</Route>
-            <Route path="*">Not Found</Route>
+            <Route path="/booking">
+              <Booking />
+            </Route>
+            <Route path="/contact">
+              <Contact />
+            </Route>
+            <Route path="*">
+              <NotFound />
+            </Route>
           </Switch>
         </Layout>
       </ThemeProvider>

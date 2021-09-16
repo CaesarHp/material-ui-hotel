@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import hotelRoom1 from "../img/hotel-room-1.jpg";
 
@@ -26,14 +27,14 @@ const useStyles = makeStyles((theme) => ({
     width: "50%",
   },
   title: {
-    color: "white",
+    color: theme.palette.grey[100],
     marginBottom: theme.spacing(3),
     fontFamily: "Cormorant Garamond",
     fontWeight: 500,
     letterSpacing: "1px",
   },
   body: {
-    color: "white",
+    color: theme.palette.grey[200],
     marginBottom: theme.spacing(5),
     fontWeight: 300,
   },
@@ -65,6 +66,8 @@ function HomeBanner() {
               size="large"
               color="primary"
               disableElevation
+              component={Link}
+              to="/booking"
               className={classes.btn}
             >
               View Rooms

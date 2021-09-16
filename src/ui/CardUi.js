@@ -12,7 +12,7 @@ import { Grid } from "@material-ui/core";
 
 const useStyles = makeStyles({
   container: {
-    padding: "0 1rem",
+    //padding: "0 1rem",
   },
   root: {
     maxWidth: 350,
