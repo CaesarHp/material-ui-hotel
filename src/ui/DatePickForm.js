@@ -10,17 +10,23 @@ import { Button } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
 
+const textFieldWidth = "100%";
+
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: "3rem 0",
+    height: "45vh",
     display: "flex",
     justifyContent: "center",
   },
-  main: {
-    width: "80%",
+  textField: {
+    width: textFieldWidth,
+  },
+  selection: {
+    marginBottom: theme.spacing(5),
   },
   btn: {
     borderRadius: 0,
+    width: textFieldWidth,
   },
 }));
 
@@ -39,7 +45,7 @@ const numberOfGuest = [
   },
 ];
 
-function HomeDatePick() {
+function DatePickForm() {
   const classes = useStyles();
 
   const [checkInDate, setCheckInDate] = useState(null);
@@ -61,34 +67,48 @@ function HomeDatePick() {
   return (
     <>
       <div className={classes.root}>
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <Grid
-            container
-            justifyContent="space-around"
-            alignItems="center"
-            className={classes.main}
-          >
-            <DatePicker
-              label="Check In"
-              value={checkInDate}
-              onChange={checkInChangeHandler}
-              renderInput={(params) => <TextField {...params} />}
-            />
+        <Grid
+          container
+          direction="column"
+          justifyContent="space-between"
+          className={classes.container}
+        >
+          <Grid item>
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DatePicker
+                label="Check In"
+                value={checkInDate}
+                onChange={checkInChangeHandler}
+                className={classes.datePicker}
+                renderInput={(params) => (
+                  <TextField {...params} className={classes.textField} />
+                )}
+              />
+            </LocalizationProvider>
+          </Grid>
 
-            <DatePicker
-              label="Check Out"
-              value={checkOutDate}
-              onChange={checkOutChangeHandler}
-              renderInput={(params) => <TextField {...params} />}
-            />
+          <Grid item>
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DatePicker
+                label="Check Out"
+                value={checkOutDate}
+                onChange={checkOutChangeHandler}
+                renderInput={(params) => (
+                  <TextField {...params} className={classes.textField} />
+                )}
+              />
+            </LocalizationProvider>
+          </Grid>
 
+          <Grid item>
             <form>
               <TextField
-                id="standard-select-currency"
+                id="selection"
                 select
                 label="Select"
                 value={guest}
                 onChange={guestChangeHandler}
+                fullWidth
               >
                 {numberOfGuest.map((option, index) => (
                   <MenuItem key={index} value={option.value}>
@@ -97,6 +117,9 @@ function HomeDatePick() {
                 ))}
               </TextField>
             </form>
+          </Grid>
+
+          <Grid item>
             <Button
               variant="contained"
               size="large"
@@ -107,10 +130,10 @@ function HomeDatePick() {
               Check Availability
             </Button>
           </Grid>
-        </LocalizationProvider>
+        </Grid>
       </div>
     </>
   );
 }
 
-export default HomeDatePick;
+export default DatePickForm;

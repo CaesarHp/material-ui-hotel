@@ -33,16 +33,15 @@ const useStyles = makeStyles((theme) => ({
   iconContainer: {
     display: "flex",
     marginBottom: theme.spacing(3),
-    color: theme.palette.grey[900],
+    color: theme.palette.primary.main,
   },
   contactInfo: {
-    fontWeight: 300,
     marginLeft: theme.spacing(2),
+    color: theme.palette.grey[900],
   },
   socialIconContainer: {
     marginLeft: theme.spacing(-0.4),
-    marginTop: theme.spacing(4),
-    color: theme.palette.grey[900],
+    color: theme.palette.primary.main,
   },
 }));
 
@@ -75,9 +74,7 @@ function ContactForm() {
                 <Typography variant="h5" className={classes.title}>
                   Contact Details
                 </Typography>
-                <Typography variant="body2" className={classes.body}>
-                  Contact us whenever you need help and we will be here 24/7.
-                </Typography>
+
                 <ContactInfo
                   iconContainer={classes.iconContainer}
                   contactInfo={classes.contactInfo}
@@ -87,12 +84,10 @@ function ContactForm() {
                 <Typography variant="h5" className={classes.title}>
                   Social Media
                 </Typography>
-                <Typography variant="body2" className={classes.body}>
-                  Don't foget to subscribe us and check the latest news.
-                </Typography>
+
                 <SocialMedia
                   socialIconContainer={classes.socialIconContainer}
-                  iconSize="large"
+                  iconSize="medium"
                 />
               </Grid>
             </Grid>

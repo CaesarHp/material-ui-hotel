@@ -1,12 +1,12 @@
 import React from "react";
 
-import ContactBanner from "../Components/ContactBanner";
 import ContactForm from "../Components/ContactForm";
+import Banner from "../ui/Banner";
 
 function Contact() {
   return (
     <>
-      <ContactBanner />
+      <Banner bannerText="Contact Us" />
       <ContactForm />
     </>
   );

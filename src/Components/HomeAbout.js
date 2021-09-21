@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import hotelImg from "../img/suite.jpg";
 
@@ -66,6 +67,8 @@ function HomeAbout() {
                   variant="contained"
                   color="primary"
                   disableElevation
+                  component={Link}
+                  to="/rooms"
                   className={classes.btn}
                 >
                   Learn More

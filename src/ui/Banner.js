@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function BookingBanner() {
+function BookingBanner({ bannerText }) {
   const classes = useStyles();
 
   return (
@@ -42,7 +42,7 @@ function BookingBanner() {
         <Container className={classes.container}>
           <div className={classes.content}>
             <Typography variant="h2" className={classes.title}>
-              Our Luxury Rooms
+              {bannerText}
             </Typography>
           </div>
         </Container>

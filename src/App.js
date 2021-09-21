@@ -5,8 +5,10 @@ import Theme from "./ui/Theme";
 
 import Layout from "./ui/Layout";
 import Home from "./Pages/Home";
+import Rooms from "./Pages/Rooms";
 import Booking from "./Pages/Booking";
 import Contact from "./Pages/Contact";
+import RoomDetail from "./Pages/RoomDetail";
 import NotFound from "./Pages/NotFound";
 
 function App() {
@@ -20,6 +22,12 @@ function App() {
             </Route>
             <Route path="/home">
               <Home />
+            </Route>
+            <Route path="/rooms" exact>
+              <Rooms />
+            </Route>
+            <Route path="/rooms/:roomId">
+              <RoomDetail />
             </Route>
             <Route path="/booking">
               <Booking />

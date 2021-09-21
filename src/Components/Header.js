@@ -22,8 +22,9 @@ import { useScrollTrigger } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import HomeIcon from "@material-ui/icons/Home";
-import BookmarksIcon from "@material-ui/icons/Bookmarks";
+import BookmarkIcon from "@material-ui/icons/Bookmark";
 import CallIcon from "@material-ui/icons/Call";
+import KingBedIcon from "@material-ui/icons/KingBed";
 
 const drawerWidth = 240;
 
@@ -108,12 +109,14 @@ function Header(props) {
   useEffect(() => {
     if (location.pathname === "/home") {
       setActiveIndex(0);
-    } else if (location.pathname === "/booking") {
+    } else if (location.pathname.includes("/rooms")) {
       setActiveIndex(1);
-    } else if (location.pathname === "/contact") {
+    } else if (location.pathname === "/booking") {
       setActiveIndex(2);
+    } else if (location.pathname === "/contact") {
+      setActiveIndex(3);
     } else {
-      setActiveIndex(null);
+      setActiveIndex(0);
     }
   }, [location]);
 
@@ -126,6 +129,10 @@ function Header(props) {
       {
         name: "Home",
         link: "/home",
+      },
+      {
+        name: "Rooms",
+        link: "/rooms",
       },
       {
         name: "Booking",
@@ -147,9 +154,14 @@ function Header(props) {
         icon: <HomeIcon className={classes.drawerIcon} />,
       },
       {
+        name: "Rooms",
+        link: "/rooms",
+        icon: <KingBedIcon className={classes.drawerIcon} />,
+      },
+      {
         name: "Booking",
         link: "/booking",
-        icon: <BookmarksIcon className={classes.drawerIcon} />,
+        icon: <BookmarkIcon className={classes.drawerIcon} />,
       },
       {
         name: "Contact",

@@ -18,6 +18,7 @@ const dataSlice = createSlice({
         view: "city",
         price: 189,
         img: standard,
+        link: "/booking/standard-room",
       },
       {
         name: "Premium Room",
@@ -26,6 +27,7 @@ const dataSlice = createSlice({
         view: "city",
         price: 229,
         img: premium,
+        link: "/booking/premium-room",
       },
       {
         name: "Deluxe Room",
@@ -34,6 +36,7 @@ const dataSlice = createSlice({
         view: "landscape",
         price: 259,
         img: deluxe,
+        link: "/booking/deluxe-room",
       },
       {
         name: "Queen Room",
@@ -42,6 +45,7 @@ const dataSlice = createSlice({
         view: "city",
         price: 229,
         img: queen,
+        link: "/booking/queen-room",
       },
       {
         name: "King Room",
@@ -50,6 +54,7 @@ const dataSlice = createSlice({
         view: "city",
         price: 229,
         img: king,
+        link: "/booking/king-room",
       },
       {
         name: "Luxury Suite",
@@ -58,6 +63,7 @@ const dataSlice = createSlice({
         view: "landscape",
         price: 359,
         img: suite,
+        link: "/booking/luxury-suite",
       },
     ],
   },

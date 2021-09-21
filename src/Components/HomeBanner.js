@@ -67,7 +67,7 @@ function HomeBanner() {
               color="primary"
               disableElevation
               component={Link}
-              to="/booking"
+              to="/rooms"
               className={classes.btn}
             >
               View Rooms

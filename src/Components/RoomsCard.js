@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function BookingCard() {
+function RoomsCard() {
   const classes = useStyles();
 
   const cardInfo = useSelector((state) => state.data.roomsInfo);
@@ -27,7 +27,7 @@ function BookingCard() {
       <Container className={classes.root}>
         <Grid container>
           {cardInfo.map((item, index) => (
-            <Grid item xs={12} md={4} className={classes.grid}>
+            <Grid item key={index} xs={12} md={4} className={classes.grid}>
               <CardUi
                 key={index}
                 name={item.name}
@@ -45,4 +45,4 @@ function BookingCard() {
   );
 }
 
-export default BookingCard;
+export default RoomsCard;
