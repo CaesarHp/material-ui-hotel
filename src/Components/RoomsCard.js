@@ -36,6 +36,7 @@ function RoomsCard() {
                 view={item.view}
                 price={item.price}
                 img={item.img}
+                link={item.link}
               />
             </Grid>
           ))}

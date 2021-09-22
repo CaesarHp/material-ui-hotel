@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core";
 import Theme from "./ui/Theme";
 
+import ScrollToTop from "./Components/ScrollToTop";
 import Layout from "./ui/Layout";
 import Home from "./Pages/Home";
 import Rooms from "./Pages/Rooms";
@@ -14,6 +15,7 @@ import NotFound from "./Pages/NotFound";
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <ThemeProvider theme={Theme}>
         <Layout>
           <Switch>

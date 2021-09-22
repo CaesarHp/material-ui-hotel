@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function RoomDetailContainer() {
+function RoomDetailContainer({ name, price }) {
   const classes = useStyles();
 
   return (
@@ -45,12 +45,12 @@ function RoomDetailContainer() {
             <Grid container direction="column" alignItems="center">
               <Grid item>
                 <Typography variant="h6" className={classes.title}>
-                  Standard Room
+                  {name}
                 </Typography>
               </Grid>
               <Grid item>
                 <Typography variant="h3" className={classes.body}>
-                  $100/stay
+                  ${price}/stay
                 </Typography>
               </Grid>
             </Grid>

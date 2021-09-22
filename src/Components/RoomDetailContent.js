@@ -1,12 +1,11 @@
 import React from "react";
 
-import roomImg from "../img/suite.jpg";
-
 import { Grid } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
 
+import RoomType from "../ui/RoomType";
 import ServiceTable from "../ui/ServiceTable";
 import PolicyAccordion from "../ui/PolicyAccordion";
 
@@ -15,6 +14,10 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(6),
   },
   marinBottomContainer: {
+    marginBottom: theme.spacing(6),
+  },
+  fullWidth: {
+    width: "100%",
     marginBottom: theme.spacing(6),
   },
   img: {
@@ -31,16 +34,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function RoomDetailContent() {
+function RoomDetailContent({ number, size, view, bed, img }) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <Grid container direction="column">
         <Grid item>
-          <Grid container className={classes.marinBottomContainer}>
-            <Grid item>
-              <img alt="room" src={roomImg} className={classes.img} />
+          <Grid container>
+            <Grid item className={classes.marinBottomContainer}>
+              <img alt="room" src={img} className={classes.img} />
+            </Grid>
+
+            <Grid item className={classes.fullWidth}>
+              <Typography variant="h5" component="h2" className={classes.title}>
+                Room Type
+              </Typography>
+              <RoomType number={number} size={size} view={view} bed={bed} />
             </Grid>
           </Grid>
         </Grid>

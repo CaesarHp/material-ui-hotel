@@ -34,6 +34,7 @@ function BookingContainer() {
                 view={item.view}
                 price={item.price}
                 img={item.img}
+                link={item.link}
               />
             ))}
           </Grid>

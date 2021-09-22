@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { Paper } from "@material-ui/core";
@@ -17,10 +18,10 @@ const useStyles = makeStyles((theme) => ({
     height: 200,
     marginRight: theme.spacing(4),
   },
-  contentContainer: {
+  media: {
     height: "100%",
   },
-  media: {
+  contentContainer: {
     height: "100%",
   },
   btn: {
@@ -36,6 +37,7 @@ export default function CardHorizontalUi({
   view,
   price,
   img,
+  link,
 }) {
   const classes = useStyles();
 
@@ -82,7 +84,12 @@ export default function CardHorizontalUi({
                 >
                   Select
                 </Button>
-                <Button size="medium" color="primary">
+                <Button
+                  size="medium"
+                  color="primary"
+                  component={Link}
+                  to={link}
+                >
                   Details
                 </Button>
               </Grid>

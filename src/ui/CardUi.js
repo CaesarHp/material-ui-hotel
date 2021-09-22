@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -11,9 +12,6 @@ import Typography from "@material-ui/core/Typography";
 import { Grid } from "@material-ui/core";
 
 const useStyles = makeStyles({
-  container: {
-    //padding: "0 1rem",
-  },
   root: {
     maxWidth: 350,
     width: 320,
@@ -30,7 +28,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CardUi({ name, number, size, view, price, img }) {
+export default function CardUi({ name, number, size, view, price, img, link }) {
   const classes = useStyles();
 
   return (
@@ -62,14 +60,16 @@ export default function CardUi({ name, number, size, view, price, img }) {
             <CardActions className={classes.btnContainer}>
               <Button
                 variant="contained"
-                size="small"
+                size="medium"
                 color="primary"
                 disableElevation
+                component={Link}
+                to={link}
                 className={classes.btn}
               >
                 From ${price} per stay
               </Button>
-              <Button size="small" color="primary">
+              <Button size="medium" color="primary" component={Link} to={link}>
                 Details
               </Button>
             </CardActions>

@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function RoomDetailContainer() {
+function RoomDetailContainer({ name, number, size, view, price, bed, img }) {
   const classes = useStyles();
 
   return (
@@ -22,10 +22,16 @@ function RoomDetailContainer() {
       <Container className={classes.root}>
         <Grid container>
           <Grid item xs={12} md={8}>
-            <RoomDetailContent />
+            <RoomDetailContent
+              number={number}
+              size={size}
+              view={view}
+              bed={bed}
+              img={img}
+            />
           </Grid>
           <Grid item xs={12} md={4}>
-            <DatePickContainer />
+            <DatePickContainer name={name} price={price} />
           </Grid>
         </Grid>
       </Container>
