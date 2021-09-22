@@ -1,9 +1,13 @@
 import React from "react";
 
+import Banner from "../ui/Banner";
+import BookingContainer from "../Components/BookingContainer";
+
 function Booking() {
   return (
     <>
-      <div>Booking</div>
+      <Banner bannerText="Booking" />
+      <BookingContainer />
     </>
   );
 }

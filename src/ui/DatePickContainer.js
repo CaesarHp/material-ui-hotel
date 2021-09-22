@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
   form: {
     padding: "1rem 2rem 3rem 2rem",
     marginLeft: 50,
+    borderRadius: 0,
   },
   formText: {
     width: "100%",

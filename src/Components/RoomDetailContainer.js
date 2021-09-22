@@ -12,25 +12,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: theme.spacing(6),
   },
-  form: {
-    padding: "1rem 2rem 3rem 2rem",
-    marginLeft: 50,
-  },
-  formText: {
-    width: "100%",
-  },
-  formTextfeild: {
-    width: "100%",
-  },
-  title: {
-    fontFamily: "Cormorant Garamond",
-    fontWeight: 400,
-    marginBottom: theme.spacing(1),
-  },
-  body: {
-    fontWeight: 300,
-    marginBottom: theme.spacing(4),
-  },
 }));
 
 function RoomDetailContainer() {
