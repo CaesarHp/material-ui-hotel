@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { dataActions } from "../Store/data-slice";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { Paper } from "@material-ui/core";
@@ -38,8 +40,28 @@ export default function CardHorizontalUi({
   price,
   img,
   link,
+  back,
 }) {
   const classes = useStyles();
+
+  const dispatch = useDispatch();
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const selectRoomHandler = () => {
+    dispatch(dataActions.selectRoom(name));
+    scrollToTop();
+  };
+
+  const backHandler = () => {
+    dispatch(dataActions.backToPrevious());
+    scrollToTop();
+  };
 
   return (
     <>
@@ -80,6 +102,7 @@ export default function CardHorizontalUi({
                   size="medium"
                   color="primary"
                   disableElevation
+                  onClick={selectRoomHandler}
                   className={classes.btn}
                 >
                   Select
@@ -92,6 +115,11 @@ export default function CardHorizontalUi({
                 >
                   Details
                 </Button>
+                {back ? (
+                  <Button size="medium" color="primary" onClick={backHandler}>
+                    Back
+                  </Button>
+                ) : null}
               </Grid>
             </Grid>
           </Grid>

@@ -78,9 +78,34 @@ const dataSlice = createSlice({
         id: "luxury-suite",
       },
     ],
+
+    selectedRoom: [],
+
+    checkInInfo: [],
   },
-  reducers: {},
+  reducers: {
+    selectRoom(state, action) {
+      const room = state.roomsInfo.find((room) => room.name === action.payload);
+      if (state.selectedRoom.length === 0) {
+        state.selectedRoom.push(room);
+      } else {
+        return;
+      }
+    },
+
+    backToPrevious(state) {
+      state.selectedRoom = [];
+    },
+
+    checkIn(state, action) {
+      if (state.checkInInfo.length === 0) {
+        state.checkInInfo.push(action.payload);
+      } else {
+        return;
+      }
+    },
+  },
 });
 
-export const dataAction = dataSlice.actions;
+export const dataActions = dataSlice.actions;
 export default dataSlice;

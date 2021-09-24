@@ -18,7 +18,17 @@ const useStyles = makeStyles((theme) => ({
 function BookingContainer() {
   const classes = useStyles();
 
-  const cardInfo = useSelector((state) => state.data.roomsInfo);
+  const allRoomsInfo = useSelector((state) => state.data.roomsInfo);
+
+  const selectedRoomInfo = useSelector((state) => state.data.selectedRoom);
+
+  let cardInfo;
+
+  if (selectedRoomInfo.length === 0) {
+    cardInfo = allRoomsInfo;
+  } else {
+    cardInfo = selectedRoomInfo;
+  }
 
   return (
     <>
@@ -35,11 +45,22 @@ function BookingContainer() {
                 price={item.price}
                 img={item.img}
                 link={item.link}
+                back={selectedRoomInfo.length === 0 ? false : true}
               />
             ))}
           </Grid>
           <Grid item xs={12} md={4}>
-            <DatePickContainer />
+            <DatePickContainer
+              name={
+                selectedRoomInfo.length === 0
+                  ? "Please select your room"
+                  : selectedRoomInfo[0].name
+              }
+              price={
+                selectedRoomInfo.length === 0 ? 0 : selectedRoomInfo[0].price
+              }
+              hasSelectRoom={selectedRoomInfo.length === 0 ? true : false}
+            />
           </Grid>
         </Grid>
       </Container>

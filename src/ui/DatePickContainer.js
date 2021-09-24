@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function RoomDetailContainer({ name, price }) {
+function RoomDetailContainer({ name, price, hasSelectRoom }) {
   const classes = useStyles();
 
   return (
@@ -56,7 +56,7 @@ function RoomDetailContainer({ name, price }) {
             </Grid>
           </Grid>
           <Grid item className={classes.formTextfeild}>
-            <DatePickForm />
+            <DatePickForm hasSelectRoom={hasSelectRoom} />
           </Grid>
         </Grid>
       </Paper>

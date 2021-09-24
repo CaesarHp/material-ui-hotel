@@ -72,6 +72,7 @@ function HomeDatePick() {
               label="Check In"
               value={checkInDate}
               onChange={checkInChangeHandler}
+              disablePast
               renderInput={(params) => <TextField {...params} />}
             />
 
@@ -79,6 +80,7 @@ function HomeDatePick() {
               label="Check Out"
               value={checkOutDate}
               onChange={checkOutChangeHandler}
+              disablePast
               renderInput={(params) => <TextField {...params} />}
             />
 

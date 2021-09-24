@@ -8,6 +8,7 @@ import Layout from "./ui/Layout";
 import Home from "./Pages/Home";
 import Rooms from "./Pages/Rooms";
 import Booking from "./Pages/Booking";
+import BookingPayment from "./Pages/BookingPayment";
 import Contact from "./Pages/Contact";
 import RoomDetail from "./Pages/RoomDetail";
 import NotFound from "./Pages/NotFound";
@@ -31,8 +32,14 @@ function App() {
             <Route path="/rooms/:roomId">
               <RoomDetail />
             </Route>
-            <Route path="/booking">
+            <Route path="/booking" exact>
+              <Redirect to="/booking/select-room-and-date" />
+            </Route>
+            <Route path="/booking/select-room-and-date">
               <Booking />
+            </Route>
+            <Route path="/booking/payment">
+              <BookingPayment />
             </Route>
             <Route path="/contact">
               <Contact />

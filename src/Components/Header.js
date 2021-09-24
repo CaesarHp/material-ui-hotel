@@ -46,6 +46,7 @@ const useStyle = makeStyles((theme) => {
       color: theme.palette.grey[800],
       fontFamily: "Cormorant Garamond",
       fontWeight: 600,
+      textDecoration: "none",
     },
     tabs: {
       marginLeft: "auto",
@@ -111,7 +112,7 @@ function Header(props) {
       setActiveIndex(0);
     } else if (location.pathname.includes("/rooms")) {
       setActiveIndex(1);
-    } else if (location.pathname === "/booking") {
+    } else if (location.pathname.includes("/booking")) {
       setActiveIndex(2);
     } else if (location.pathname === "/contact") {
       setActiveIndex(3);
@@ -136,7 +137,7 @@ function Header(props) {
       },
       {
         name: "Booking",
-        link: "/booking",
+        link: "/booking/select-room-and-date",
       },
       {
         name: "Contact",
@@ -160,7 +161,7 @@ function Header(props) {
       },
       {
         name: "Booking",
-        link: "/booking",
+        link: "/booking/select-room-and-date",
         icon: <BookmarkIcon className={classes.drawerIcon} />,
       },
       {
@@ -241,7 +242,12 @@ function Header(props) {
         <ElevationScroll>
           <AppBar elevation={0} position="fixed" className={classes.appbar}>
             <Toolbar className={classes.toolbar}>
-              <Typography variant="h5" component="h1" className={classes.logo}>
+              <Typography
+                variant="h5"
+                component={Link}
+                to="/home"
+                className={classes.logo}
+              >
                 SOHO Hotel
               </Typography>
               {matches ? drawer : tabs}

@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { dataActions } from "../Store/data-slice";
+import { useHistory } from "react-router-dom";
 
-import { Grid } from "@material-ui/core";
+import moment from "moment";
+
+import { Grid, Typography } from "@material-ui/core";
 import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
@@ -32,25 +37,30 @@ const useStyles = makeStyles((theme) => ({
 
 const numberOfGuest = [
   {
-    value: "1 Guest",
+    value: 1,
   },
   {
-    value: "2 Guests",
+    value: 2,
   },
   {
-    value: "3 Guests",
+    value: 3,
   },
   {
-    value: "4 Guests",
+    value: 4,
   },
 ];
 
-function DatePickForm() {
+function DatePickForm({ hasSelectRoom }) {
   const classes = useStyles();
+
+  const dispatch = useDispatch();
+
+  const history = useHistory();
 
   const [checkInDate, setCheckInDate] = useState(null);
   const [checkOutDate, setCheckOutDate] = useState(null);
-  const [guest, setGuest] = useState("1 Guest");
+  const [guest, setGuest] = useState(1);
+  const [valid, setValid] = useState(false);
 
   const checkInChangeHandler = (date) => {
     setCheckInDate(date);
@@ -62,6 +72,25 @@ function DatePickForm() {
 
   const guestChangeHandler = (e) => {
     setGuest(e.target.value);
+  };
+
+  const submitHandler = () => {
+    if (checkInDate && checkOutDate && guest) {
+      const info = {
+        checkInDate: moment(checkInDate).format("L"),
+        checkOutDate: moment(checkOutDate).format("L"),
+        days: Math.round(
+          (checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 3600 * 24)
+        ),
+        guest: guest,
+      };
+
+      dispatch(dataActions.checkIn(info));
+
+      history.push("/home");
+    } else {
+      setValid(true);
+    }
   };
 
   return (
@@ -79,6 +108,7 @@ function DatePickForm() {
                 label="Check In"
                 value={checkInDate}
                 onChange={checkInChangeHandler}
+                disablePast
                 className={classes.datePicker}
                 renderInput={(params) => (
                   <TextField {...params} className={classes.textField} />
@@ -93,6 +123,7 @@ function DatePickForm() {
                 label="Check Out"
                 value={checkOutDate}
                 onChange={checkOutChangeHandler}
+                disablePast
                 renderInput={(params) => (
                   <TextField {...params} className={classes.textField} />
                 )}
@@ -105,7 +136,7 @@ function DatePickForm() {
               <TextField
                 id="selection"
                 select
-                label="Select"
+                label="Guest(s)"
                 value={guest}
                 onChange={guestChangeHandler}
                 fullWidth
@@ -125,11 +156,28 @@ function DatePickForm() {
               size="large"
               color="primary"
               disableElevation
+              disabled={hasSelectRoom}
+              onClick={submitHandler}
               className={classes.btn}
             >
               Check Availability
             </Button>
           </Grid>
+
+          {valid ? (
+            <Grid item>
+              <Typography
+                variant="h6"
+                style={{
+                  fontSize: "1rem",
+                  fontWeight: 300,
+                  textAlign: "center",
+                }}
+              >
+                Please select date and guest.
+              </Typography>
+            </Grid>
+          ) : null}
         </Grid>
       </div>
     </>

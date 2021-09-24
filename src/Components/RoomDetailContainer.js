@@ -31,7 +31,11 @@ function RoomDetailContainer({ name, number, size, view, price, bed, img }) {
             />
           </Grid>
           <Grid item xs={12} md={4}>
-            <DatePickContainer name={name} price={price} />
+            <DatePickContainer
+              name={name}
+              price={price}
+              hasSelectRoom={false}
+            />
           </Grid>
         </Grid>
       </Container>
