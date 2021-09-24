@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { dataActions } from "../Store/data-slice";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import moment from "moment";
 
@@ -55,7 +57,11 @@ function DatePickForm({ hasSelectRoom }) {
 
   const dispatch = useDispatch();
 
+  const dateInfo = useSelector((state) => state.data.checkInInfo);
+
   const history = useHistory();
+
+  const params = useParams();
 
   const [checkInDate, setCheckInDate] = useState(null);
   const [checkOutDate, setCheckOutDate] = useState(null);
@@ -64,14 +70,20 @@ function DatePickForm({ hasSelectRoom }) {
 
   const checkInChangeHandler = (date) => {
     setCheckInDate(date);
+
+    setValid(false);
   };
 
   const checkOutChangeHandler = (date) => {
     setCheckOutDate(date);
+
+    setValid(false);
   };
 
   const guestChangeHandler = (e) => {
     setGuest(e.target.value);
+
+    setValid(false);
   };
 
   const submitHandler = () => {
@@ -87,7 +99,11 @@ function DatePickForm({ hasSelectRoom }) {
 
       dispatch(dataActions.checkIn(info));
 
-      history.push("/home");
+      // dispatch(dataActions.selectRoom(params.roomId));
+
+      // console.log("dispatch");
+
+      //history.push("/home");
     } else {
       setValid(true);
     }
@@ -106,7 +122,14 @@ function DatePickForm({ hasSelectRoom }) {
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
                 label="Check In"
-                value={checkInDate}
+                value={
+                  // dateInfo.length === 0
+                  //   ? checkInDate
+                  //   : new Date(
+                  //       dateInfo[0].checkInDate.replaceAll("/", "-").toString()
+                  //     )
+                  checkInDate
+                }
                 onChange={checkInChangeHandler}
                 disablePast
                 className={classes.datePicker}
@@ -121,7 +144,14 @@ function DatePickForm({ hasSelectRoom }) {
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
                 label="Check Out"
-                value={checkOutDate}
+                value={
+                  // dateInfo.length === 0
+                  //   ? checkOutDate
+                  //   : new Date(
+                  //       dateInfo[0].checkOutDate.replaceAll("/", "-").toString()
+                  //     )
+                  checkOutDate
+                }
                 onChange={checkOutChangeHandler}
                 disablePast
                 renderInput={(params) => (

@@ -40,6 +40,7 @@ export default function CardHorizontalUi({
   price,
   img,
   link,
+  id,
   back,
 }) {
   const classes = useStyles();
@@ -54,7 +55,7 @@ export default function CardHorizontalUi({
   };
 
   const selectRoomHandler = () => {
-    dispatch(dataActions.selectRoom(name));
+    dispatch(dataActions.selectRoom(id));
     scrollToTop();
   };
 

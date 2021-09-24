@@ -85,11 +85,11 @@ const dataSlice = createSlice({
   },
   reducers: {
     selectRoom(state, action) {
-      const room = state.roomsInfo.find((room) => room.name === action.payload);
+      const room = state.roomsInfo.find((room) => room.id === action.payload);
       if (state.selectedRoom.length === 0) {
         state.selectedRoom.push(room);
       } else {
-        return;
+        state.selectedRoom.splice(0, 1, room);
       }
     },
 

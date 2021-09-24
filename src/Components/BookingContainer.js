@@ -45,6 +45,7 @@ function BookingContainer() {
                 price={item.price}
                 img={item.img}
                 link={item.link}
+                id={item.id}
                 back={selectedRoomInfo.length === 0 ? false : true}
               />
             ))}
