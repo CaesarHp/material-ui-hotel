@@ -101,7 +101,7 @@ const dataSlice = createSlice({
       if (state.checkInInfo.length === 0) {
         state.checkInInfo.push(action.payload);
       } else {
-        return;
+        state.checkInInfo.splice(0, 1, action.payload);
       }
     },
   },

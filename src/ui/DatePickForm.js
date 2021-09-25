@@ -57,8 +57,6 @@ function DatePickForm({ hasSelectRoom }) {
 
   const dispatch = useDispatch();
 
-  const dateInfo = useSelector((state) => state.data.checkInInfo);
-
   const history = useHistory();
 
   const params = useParams();
@@ -87,7 +85,7 @@ function DatePickForm({ hasSelectRoom }) {
   };
 
   const submitHandler = () => {
-    if (checkInDate && checkOutDate && guest) {
+    if (params.roomId && checkInDate && checkOutDate && guest) {
       const info = {
         checkInDate: moment(checkInDate).format("L"),
         checkOutDate: moment(checkOutDate).format("L"),
@@ -99,11 +97,22 @@ function DatePickForm({ hasSelectRoom }) {
 
       dispatch(dataActions.checkIn(info));
 
-      // dispatch(dataActions.selectRoom(params.roomId));
+      dispatch(dataActions.selectRoom(params.roomId));
 
-      // console.log("dispatch");
+      history.push("/booking/payment");
+    } else if (checkInDate && checkOutDate && guest) {
+      const info = {
+        checkInDate: moment(checkInDate).format("L"),
+        checkOutDate: moment(checkOutDate).format("L"),
+        days: Math.round(
+          (checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 3600 * 24)
+        ),
+        guest: guest,
+      };
 
-      //history.push("/home");
+      dispatch(dataActions.checkIn(info));
+
+      history.push("/booking/payment");
     } else {
       setValid(true);
     }
