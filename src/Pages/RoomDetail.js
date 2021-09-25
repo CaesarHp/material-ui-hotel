@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
 
 import Banner from "../ui/Banner";
@@ -11,6 +12,13 @@ function Room() {
   const rooms = useSelector((state) => state.data.roomsInfo);
 
   const roomInfo = rooms.find((room) => room.id === params.roomId);
+
+  const history = useHistory();
+
+  if (!roomInfo) {
+    history.push("/notfound");
+    return null;
+  }
 
   return (
     <>

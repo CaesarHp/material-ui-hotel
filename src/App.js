@@ -23,7 +23,7 @@ function App() {
             <Route path="/" exact>
               <Redirect to="/home" />
             </Route>
-            <Route path="/home">
+            <Route path="/home" exact>
               <Home />
             </Route>
             <Route path="/rooms" exact>
@@ -43,6 +43,9 @@ function App() {
             </Route>
             <Route path="/contact">
               <Contact />
+            </Route>
+            <Route path="/notfound" exact>
+              <NotFound />
             </Route>
             <Route path="*">
               <NotFound />
