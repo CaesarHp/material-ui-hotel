@@ -41,7 +41,7 @@ function App() {
             <Route path="/booking/payment">
               <BookingPayment />
             </Route>
-            <Route path="/contact">
+            <Route path="/contact" exact>
               <Contact />
             </Route>
             <Route path="/notfound" exact>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { dataActions } from "../Store/data-slice";
 
@@ -13,35 +12,39 @@ import DatePicker from "@mui/lab/DatePicker";
 import { MenuItem } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: "3rem 0",
-    display: "flex",
-    justifyContent: "center",
+    padding: "3rem",
+    [theme.breakpoints.down("sm")]: {
+      padding: "3rem 5rem",
+    },
   },
-  main: {
-    width: "80%",
+  container: {
+    width: "100%",
   },
+  textField: {},
   btn: {
     borderRadius: 0,
+    padding: "0.8rem",
   },
 }));
 
 const numberOfGuest = [
   {
-    value: "1 Guest",
+    value: 1,
   },
   {
-    value: "2 Guests",
+    value: 2,
   },
   {
-    value: "3 Guests",
+    value: 3,
   },
   {
-    value: "4 Guests",
+    value: 4,
   },
 ];
 
@@ -50,11 +53,9 @@ function HomeDatePick() {
 
   const dispatch = useDispatch();
 
-  const dateInfo = useSelector((state) => state.data.checkInInfo);
-
   const [checkInDate, setCheckInDate] = useState(null);
   const [checkOutDate, setCheckOutDate] = useState(null);
-  const [guest, setGuest] = useState("1 Guest");
+  const [guest, setGuest] = useState(1);
   const [valid, setValid] = useState(false);
 
   const checkInChangeHandler = (date) => {
@@ -94,73 +95,102 @@ function HomeDatePick() {
 
   return (
     <>
-      <div className={classes.root}>
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <Container className={classes.root}>
+        <Grid container justifyContent="center" alignItems="center">
           <Grid
             container
-            justifyContent="space-around"
+            justifyContent="space-between"
             alignItems="center"
-            className={classes.main}
+            spacing={5}
           >
-            <DatePicker
-              label="Check In"
-              value={checkInDate}
-              onChange={checkInChangeHandler}
-              disablePast
-              renderInput={(params) => <TextField {...params} />}
-            />
+            <Grid item xs={12} md={3} className={classes.container}>
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <DatePicker
+                  label="Check In"
+                  value={checkInDate}
+                  onChange={checkInChangeHandler}
+                  disablePast
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      fullWidth
+                      className={classes.textField}
+                    />
+                  )}
+                />
+              </LocalizationProvider>
+            </Grid>
 
-            <DatePicker
-              label="Check Out"
-              value={checkOutDate}
-              onChange={checkOutChangeHandler}
-              disablePast
-              renderInput={(params) => <TextField {...params} />}
-            />
+            <Grid item xs={12} md={3} className={classes.container}>
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <DatePicker
+                  label="Check Out"
+                  value={checkOutDate}
+                  onChange={checkOutChangeHandler}
+                  disablePast
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      fullWidth
+                      className={classes.textField}
+                    />
+                  )}
+                />
+              </LocalizationProvider>
+            </Grid>
 
-            <form>
-              <TextField
-                id="standard-select-currency"
-                select
-                label="Select"
-                value={guest}
-                onChange={guestChangeHandler}
-              >
-                {numberOfGuest.map((option, index) => (
-                  <MenuItem key={index} value={option.value}>
-                    {option.value}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </form>
-            <Button
-              variant="contained"
-              size="large"
-              color="primary"
-              disableElevation
-              onClick={submitHandler}
-              className={classes.btn}
-            >
-              Check Availability
-            </Button>
-
-            {valid ? (
-              <Grid item>
-                <Typography
-                  variant="h6"
-                  style={{
-                    fontSize: "1rem",
-                    fontWeight: 300,
-                    textAlign: "center",
-                  }}
+            <Grid item xs={12} md={3} className={classes.container}>
+              <form>
+                <TextField
+                  id="guest"
+                  select
+                  label="Guest(s)"
+                  fullWidth
+                  value={guest}
+                  onChange={guestChangeHandler}
+                  className={classes.textField}
                 >
-                  Please select date and guest.
-                </Typography>
+                  {numberOfGuest.map((option, index) => (
+                    <MenuItem key={index} value={option.value}>
+                      {option.value}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </form>
+            </Grid>
+
+            <Grid item xs={12} md={3} className={classes.container}>
+              <Grid container justifyContent="center">
+                <Button
+                  variant="contained"
+                  size="medium"
+                  color="primary"
+                  disableElevation
+                  onClick={submitHandler}
+                  className={classes.btn}
+                >
+                  Check Availability
+                </Button>
               </Grid>
-            ) : null}
+            </Grid>
           </Grid>
-        </LocalizationProvider>
-      </div>
+
+          {valid ? (
+            <Grid item>
+              <Typography
+                variant="h6"
+                style={{
+                  fontSize: "1rem",
+                  fontWeight: 300,
+                  textAlign: "center",
+                }}
+              >
+                Please select date and guest.
+              </Typography>
+            </Grid>
+          ) : null}
+        </Grid>
+      </Container>
     </>
   );
 }

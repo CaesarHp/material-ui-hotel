@@ -5,6 +5,8 @@ import { Typography } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
 import { styled } from "@material-ui/styles";
+import { useTheme } from "@material-ui/core";
+import { useMediaQuery } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core";
 
@@ -16,10 +18,13 @@ const useStyles = makeStyles((theme) => ({
     padding: "4rem 5rem",
     color: "white",
     backgroundColor: theme.palette.grey[900],
+    [theme.breakpoints.down("sm")]: {
+      textAlign: "center",
+    },
   },
   title: {
     color: theme.palette.grey[200],
-    marginBottom: theme.spacing(4),
+    marginBottom: theme.spacing(3),
   },
   body: {
     color: theme.palette.grey[300],
@@ -48,8 +53,9 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 0,
   },
   copyright: {
-    color: theme.palette.grey[200],
-    marginTop: "4rem",
+    color: theme.palette.grey[300],
+    fontWeight: 400,
+    marginTop: "2rem",
   },
 }));
 
@@ -79,12 +85,15 @@ const CssTextField = styled(TextField)({
 function Footer() {
   const classes = useStyles();
 
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <>
       <div className={classes.root}>
-        <Grid container>
+        <Grid container spacing={matches ? 6 : 0}>
           <Grid item xs={12} md={4}>
-            <Grid container>
+            <Grid container justifyContent="center">
               <Grid item className={classes.aboutContainer}>
                 <Typography
                   variant="h6"
@@ -104,11 +113,15 @@ function Footer() {
                   socialIconContainer={classes.socialIconContainer}
                   iconSize="medium"
                 />
+
+                <Typography variant="body2" className={classes.copyright}>
+                  © 2021 Soho Hotel. All Rights Reserved
+                </Typography>
               </Grid>
             </Grid>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Grid container>
+            <Grid container justifyContent="center">
               <Grid item>
                 <Typography variant="h6" className={classes.title}>
                   Contact
@@ -122,7 +135,7 @@ function Footer() {
             </Grid>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Grid container>
+            <Grid container justifyContent="center">
               <Grid item>
                 <Typography variant="h6" className={classes.title}>
                   Subscribition
@@ -133,6 +146,7 @@ function Footer() {
                     id="email"
                     label="Email Address"
                     required
+                    fullWidth
                     InputProps={{ disableUnderline: true }}
                     className={classes.input}
                   />
@@ -148,13 +162,6 @@ function Footer() {
                 </Button>
               </Grid>
             </Grid>
-          </Grid>
-        </Grid>
-        <Grid container>
-          <Grid item xs={12} className={classes.copyright}>
-            <Typography variant="body2">
-              © 2021 Soho Hotel. All Rights Reserved
-            </Typography>
           </Grid>
         </Grid>
       </div>

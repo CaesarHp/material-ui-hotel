@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { dataActions } from "../Store/data-slice";
-import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
@@ -173,7 +172,7 @@ function DatePickForm({ hasSelectRoom }) {
           <Grid item>
             <form>
               <TextField
-                id="selection"
+                id="guest"
                 select
                 label="Guest(s)"
                 value={guest}

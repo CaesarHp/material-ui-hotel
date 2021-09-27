@@ -12,10 +12,15 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: "4rem 0",
+    padding: "4rem 3rem",
   },
-  textContent: {
-    width: "75%",
+  textContainer: {
+    width: "80%",
+    [theme.breakpoints.down("md")]: {
+      width: "60%",
+      textAlign: "center",
+      margin: "0 auto",
+    },
   },
   title: {
     marginBottom: theme.spacing(5),
@@ -27,9 +32,16 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(5),
     fontWeight: 300,
   },
-  img: {
-    width: 550,
+  imgContainer: {
+    height: 350,
+    [theme.breakpoints.down("xs")]: {
+      height: 300,
+    },
   },
+  img: {
+    height: "100%",
+  },
+
   btn: {
     borderRadius: 0,
     padding: "1rem 2rem",
@@ -42,10 +54,10 @@ function HomeAbout() {
   return (
     <>
       <Container className={classes.root}>
-        <Grid container alignItems="center">
-          <Grid item xs={12} md={6}>
-            <Grid container justifyContent="center">
-              <Grid item className={classes.textContent}>
+        <Grid container alignItems="center" spacing={4}>
+          <Grid item xs={12} lg={6}>
+            <Grid container className={classes.textContainer}>
+              <Grid item>
                 <Typography
                   variant="h4"
                   component="h2"
@@ -76,9 +88,9 @@ function HomeAbout() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} lg={6}>
             <Grid container justifyContent="center">
-              <Grid item>
+              <Grid item className={classes.imgContainer}>
                 <img alt="hotel-img" src={hotelImg} className={classes.img} />
               </Grid>
             </Grid>
