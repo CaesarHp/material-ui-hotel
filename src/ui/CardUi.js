@@ -11,14 +11,23 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Grid } from "@material-ui/core";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 350,
     width: 320,
     borderRadius: 0,
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
   },
   media: {
     height: 250,
+    [theme.breakpoints.down("sm")]: {
+      height: 150,
+    },
+    // [theme.breakpoints.down("xs")]: {
+    //   height: 100,
+    // },
   },
   btnContainer: {
     padding: "1rem",
@@ -26,7 +35,7 @@ const useStyles = makeStyles({
   btn: {
     borderRadius: 0,
   },
-});
+}));
 
 export default function CardUi({ name, number, size, view, price, img, link }) {
   const classes = useStyles();
@@ -67,7 +76,7 @@ export default function CardUi({ name, number, size, view, price, img, link }) {
                 to={link}
                 className={classes.btn}
               >
-                From ${price} per stay
+                From ${price}
               </Button>
               <Button size="medium" color="primary" component={Link} to={link}>
                 Details

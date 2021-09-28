@@ -13,8 +13,8 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(3),
-    marginLeft: theme.spacing(10),
-    marginRight: theme.spacing(10),
+    //marginLeft: theme.spacing(10),
+    //marginRight: theme.spacing(10),
     borderRadius: 0,
   },
   title: {
@@ -38,12 +38,9 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 0,
     marginBottom: theme.spacing(4),
   },
-  imgContainer: {
-    height: 120,
-    //marginRight: theme.spacing(2),
-  },
-  media: {
+  img: {
     height: "100%",
+    width: "100%",
   },
   contentContainer: {
     height: "100%",
@@ -88,16 +85,20 @@ function PaymentRoomInfo() {
 
         <div>
           <Paper elevation={0} className={classes.card}>
-            <Grid container>
-              <Grid item xs={6} className={classes.imgContainer}>
+            <Grid container spacing={2}>
+              <Grid item xs={6}>
                 {selectedRoomInfo ? (
                   <img
                     alt="img"
                     src={selectedRoomInfo.img}
-                    className={classes.media}
+                    className={classes.img}
                   />
                 ) : (
-                  <Skeleton variant="rectangular" width={180} height={120} />
+                  <Skeleton
+                    variant="rectangular"
+                    width={"80%"}
+                    height={"100%"}
+                  />
                 )}
               </Grid>
 

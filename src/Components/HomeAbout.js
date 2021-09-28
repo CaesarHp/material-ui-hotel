@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
   img: {
     height: "100%",
+    width: "100%",
   },
 
   btn: {
@@ -89,11 +90,12 @@ function HomeAbout() {
             </Grid>
           </Grid>
           <Grid item xs={12} lg={6}>
-            <Grid container justifyContent="center">
+            {/* <Grid container justifyContent="center">
               <Grid item className={classes.imgContainer}>
                 <img alt="hotel-img" src={hotelImg} className={classes.img} />
               </Grid>
-            </Grid>
+            </Grid> */}
+            <img alt="hotel-img" src={hotelImg} className={classes.img} />
           </Grid>
         </Grid>
       </Container>

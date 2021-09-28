@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
   sort: {
     marginRight: "1.8rem",
     marginBottom: "2rem",
+    [theme.breakpoints.down("md")]: {
+      marginRight: 0,
+    },
   },
 }));
 

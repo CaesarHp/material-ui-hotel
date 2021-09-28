@@ -1,6 +1,7 @@
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import { ThemeProvider } from "@material-ui/core";
+import { responsiveFontSizes } from "@material-ui/core";
 import Theme from "./ui/Theme";
 
 import ScrollToTop from "./Components/ScrollToTop";
@@ -13,11 +14,14 @@ import Contact from "./Pages/Contact";
 import RoomDetail from "./Pages/RoomDetail";
 import NotFound from "./Pages/NotFound";
 
+let theme = Theme;
+theme = responsiveFontSizes(theme);
+
 function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <ThemeProvider theme={Theme}>
+      <ThemeProvider theme={theme}>
         <Layout>
           <Switch>
             <Route path="/" exact>
