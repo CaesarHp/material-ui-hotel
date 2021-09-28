@@ -116,7 +116,6 @@ function PaymentRoomInfo() {
                     ) : (
                       <Skeleton width="100%" />
                     )}
-                    {/* <Skeleton width="100%" /> */}
                   </Grid>
 
                   {selectedRoomInfo ? (

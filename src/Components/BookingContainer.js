@@ -11,7 +11,7 @@ import CardHorizontalUi from "../ui/CardHorizontalUi";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: "2rem 0",
+    padding: "3rem",
   },
 }));
 
@@ -33,7 +33,7 @@ function BookingContainer() {
   return (
     <>
       <Container className={classes.root}>
-        <Grid container>
+        <Grid container spacing={5}>
           <Grid item xs={12} md={8}>
             {cardInfo.map((item, index) => (
               <CardHorizontalUi

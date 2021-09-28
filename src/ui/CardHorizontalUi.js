@@ -7,21 +7,22 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Paper } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { Grid } from "@material-ui/core";
+import Grid from "@mui/material/Grid";
+import { useMediaQuery } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: "100%",
     borderRadius: 0,
     padding: "2rem",
     border: "1px solid #eee",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: theme.spacing(2),
+    },
   },
-  imgContainer: {
-    height: 200,
-    marginRight: theme.spacing(4),
-  },
-  media: {
+  img: {
     height: "100%",
+    width: "100%",
   },
   contentContainer: {
     height: "100%",
@@ -29,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
   btn: {
     borderRadius: 0,
     marginRight: theme.spacing(2),
+    [theme.breakpoints.down("sm")]: {
+      marginTop: theme.spacing(2),
+    },
   },
 }));
 
@@ -46,6 +50,9 @@ export default function CardHorizontalUi({
   const classes = useStyles();
 
   const dispatch = useDispatch();
+
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("xs"));
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -67,12 +74,12 @@ export default function CardHorizontalUi({
   return (
     <>
       <Paper elevation={0} className={classes.root}>
-        <Grid container>
-          <Grid item className={classes.imgContainer}>
-            <img alt="img" src={img} className={classes.media} />
+        <Grid container spacing={matches ? 1 : 2}>
+          <Grid item xs={12} md={5}>
+            <img alt="img" src={img} className={classes.img} />
           </Grid>
 
-          <Grid item>
+          <Grid item xs={12} md={7}>
             <Grid
               container
               direction="column"
@@ -113,11 +120,17 @@ export default function CardHorizontalUi({
                   color="primary"
                   component={Link}
                   to={link}
+                  className={classes.btn}
                 >
                   Details
                 </Button>
                 {back ? (
-                  <Button size="medium" color="primary" onClick={backHandler}>
+                  <Button
+                    size="medium"
+                    color="primary"
+                    onClick={backHandler}
+                    className={classes.btn}
+                  >
                     Back
                   </Button>
                 ) : null}

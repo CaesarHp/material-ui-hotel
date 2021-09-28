@@ -1,7 +1,6 @@
 import React from "react";
 
 import { TextField } from "@material-ui/core";
-import { Button } from "@material-ui/core";
 import { styled } from "@material-ui/styles";
 import { Grid } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
@@ -9,7 +8,11 @@ import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    [theme.breakpoints.down("sm")]: {
+      padding: "0 3rem",
+    },
+  },
   title: {
     marginBottom: theme.spacing(3),
     color: theme.palette.grey[800],

@@ -11,6 +11,7 @@ import DatePickContainer from "../ui/DatePickContainer";
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: theme.spacing(6),
+    padding: "0 3rem",
   },
 }));
 
@@ -20,7 +21,7 @@ function RoomDetailContainer({ name, number, size, view, price, bed, img }) {
   return (
     <>
       <Container className={classes.root}>
-        <Grid container>
+        <Grid container spacing={5}>
           <Grid item xs={12} md={8}>
             <RoomDetailContent
               number={number}

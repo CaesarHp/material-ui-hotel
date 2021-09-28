@@ -9,13 +9,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import DatePickForm from "./DatePickForm";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    marginTop: theme.spacing(6),
-  },
   form: {
     padding: "1rem 2rem 3rem 2rem",
-    marginLeft: 50,
     borderRadius: 0,
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "5rem",
+    },
   },
   formText: {
     width: "100%",
