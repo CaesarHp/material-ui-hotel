@@ -5,8 +5,6 @@ import FormUi from "../ui/FormUi";
 import Grid from "@mui/material/Grid";
 import { Container } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
-import { useMediaQuery } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -24,9 +22,6 @@ const useStyles = makeStyles((theme) => ({
   body: {
     marginBottom: theme.spacing(4),
     color: theme.palette.grey[700],
-  },
-  oneSide: {
-    //width: "60%",
   },
   contactDetails: {
     marginBottom: theme.spacing(4),
@@ -48,9 +43,6 @@ const useStyles = makeStyles((theme) => ({
 
 function ContactForm() {
   const classes = useStyles();
-
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <>
