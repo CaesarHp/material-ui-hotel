@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { Grid } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
@@ -175,6 +176,8 @@ function PaymentRoomInfo() {
           variant="contained"
           color="primary"
           disableElevation
+          component={Link}
+          to="/home"
           className={classes.btn}
         >
           Process Payment

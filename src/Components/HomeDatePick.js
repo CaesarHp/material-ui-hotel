@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { dataActions } from "../Store/data-slice";
+import { useHistory } from "react-router-dom";
 
 import moment from "moment";
 
@@ -53,6 +54,8 @@ function HomeDatePick() {
 
   const dispatch = useDispatch();
 
+  const history = useHistory();
+
   const [checkInDate, setCheckInDate] = useState(null);
   const [checkOutDate, setCheckOutDate] = useState(null);
   const [guest, setGuest] = useState(1);
@@ -88,6 +91,8 @@ function HomeDatePick() {
       };
 
       dispatch(dataActions.checkIn(info));
+
+      history.push("/booking/select-room-and-date");
     } else {
       setValid(true);
     }

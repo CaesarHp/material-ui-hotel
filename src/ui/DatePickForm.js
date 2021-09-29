@@ -16,8 +16,6 @@ import { Button } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-const textFieldWidth = "100%";
-
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "45vh",
@@ -25,18 +23,18 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
   textField: {
-    width: textFieldWidth,
+    width: "100%",
   },
   selection: {
     marginBottom: theme.spacing(5),
   },
   btn: {
     borderRadius: 0,
-    width: textFieldWidth,
+    width: "100%",
   },
 }));
 
-const numberOfGuest = [
+const NUMBER_OF_GUEST = [
   {
     value: 1,
   },
@@ -179,7 +177,7 @@ function DatePickForm({ hasSelectRoom }) {
                 onChange={guestChangeHandler}
                 fullWidth
               >
-                {numberOfGuest.map((option, index) => (
+                {NUMBER_OF_GUEST.map((option, index) => (
                   <MenuItem key={index} value={option.value}>
                     {option.value}
                   </MenuItem>
