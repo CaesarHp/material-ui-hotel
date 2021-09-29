@@ -4,13 +4,15 @@ import { TextField } from "@material-ui/core";
 import { styled } from "@material-ui/styles";
 import { Grid } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
+import { useMediaQuery } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     [theme.breakpoints.down("sm")]: {
-      padding: "0 3rem",
+      padding: "0 1rem",
     },
   },
   title: {
@@ -55,6 +57,9 @@ const CssTextField = styled(TextField)({
 function PaymentForm() {
   const classes = useStyles();
 
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("xs"));
+
   return (
     <>
       <div className={classes.root}>
@@ -66,7 +71,11 @@ function PaymentForm() {
               </Typography>
             </Grid>
             <Grid item>
-              <Grid container spacing={3} justifyContent="space-between">
+              <Grid
+                container
+                spacing={matches ? 0 : 3}
+                justifyContent="space-between"
+              >
                 <Grid item xs={6}>
                   <CssTextField
                     variant="outlined"
@@ -105,8 +114,12 @@ function PaymentForm() {
             </Grid>
 
             <Grid item>
-              <Grid container spacing={3} justifyContent="space-between">
-                <Grid item xs={8}>
+              <Grid
+                container
+                spacing={matches ? 0 : 3}
+                justifyContent="space-between"
+              >
+                <Grid item xs={6} md={8}>
                   <CssTextField
                     variant="outlined"
                     id="address"
@@ -114,7 +127,7 @@ function PaymentForm() {
                     className={classes.input}
                   />
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={6} md={4}>
                   <CssTextField
                     variant="outlined"
                     id="address"
@@ -135,7 +148,11 @@ function PaymentForm() {
             </Grid>
 
             <Grid item>
-              <Grid container spacing={3} justifyContent="space-between">
+              <Grid
+                container
+                spacing={matches ? 0 : 3}
+                justifyContent="space-between"
+              >
                 <Grid item xs={4}>
                   <CssTextField
                     variant="outlined"
@@ -188,7 +205,11 @@ function PaymentForm() {
             </Grid>
 
             <Grid item>
-              <Grid container spacing={3} justifyContent="space-between">
+              <Grid
+                container
+                spacing={matches ? 0 : 3}
+                justifyContent="space-between"
+              >
                 <Grid item xs={6}>
                   <CssTextField
                     variant="outlined"

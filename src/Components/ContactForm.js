@@ -2,9 +2,11 @@ import React from "react";
 
 import FormUi from "../ui/FormUi";
 
-import { Grid } from "@material-ui/core";
+import Grid from "@mui/material/Grid";
 import { Container } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
+import { useMediaQuery } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -13,7 +15,7 @@ import SocialMedia from "../ui/SocialMedia";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: "2rem 0",
+    padding: "2rem",
   },
   title: {
     marginBottom: theme.spacing(2),
@@ -24,8 +26,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.grey[700],
   },
   oneSide: {
-    width: "80%",
-    margin: "0 auto",
+    //width: "60%",
   },
   contactDetails: {
     marginBottom: theme.spacing(4),
@@ -48,11 +49,14 @@ const useStyles = makeStyles((theme) => ({
 function ContactForm() {
   const classes = useStyles();
 
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <>
       <Container className={classes.root}>
-        <Grid container>
-          <Grid item xs={12} md={6}>
+        <Grid container spacing={5}>
+          <Grid item xs={12} md={8}>
             <Grid container direction="column" className={classes.oneSide}>
               <Grid item>
                 <Typography variant="h5" className={classes.title}>
@@ -68,7 +72,7 @@ function ContactForm() {
             </Grid>
           </Grid>
 
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={4}>
             <Grid container direction="column" className={classes.oneSide}>
               <Grid item className={classes.contactDetails}>
                 <Typography variant="h5" className={classes.title}>

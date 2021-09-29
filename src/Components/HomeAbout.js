@@ -13,11 +13,14 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: "4rem 3rem",
+    [theme.breakpoints.down("md")]: {
+      padding: "4rem 2rem",
+    },
   },
   textContainer: {
     width: "80%",
     [theme.breakpoints.down("md")]: {
-      width: "60%",
+      width: "100%",
       textAlign: "center",
       margin: "0 auto",
     },

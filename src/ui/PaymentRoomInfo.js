@@ -13,8 +13,6 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(3),
-    //marginLeft: theme.spacing(10),
-    //marginRight: theme.spacing(10),
     borderRadius: 0,
   },
   title: {
@@ -86,7 +84,7 @@ function PaymentRoomInfo() {
         <div>
           <Paper elevation={0} className={classes.card}>
             <Grid container spacing={2}>
-              <Grid item xs={6}>
+              <Grid item xs={12} md={6}>
                 {selectedRoomInfo ? (
                   <img
                     alt="img"
@@ -102,7 +100,7 @@ function PaymentRoomInfo() {
                 )}
               </Grid>
 
-              <Grid item xs={6}>
+              <Grid item xs={12} md={6}>
                 <Grid
                   container
                   direction="column"

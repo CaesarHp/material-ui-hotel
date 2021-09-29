@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     padding: "3rem",
     [theme.breakpoints.down("sm")]: {
-      padding: "3rem 5rem",
+      padding: "3rem 2rem",
     },
   },
   container: {

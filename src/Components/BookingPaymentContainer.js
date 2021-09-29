@@ -1,7 +1,9 @@
 import React from "react";
 
 import { Container } from "@material-ui/core";
-import { Grid } from "@material-ui/core";
+import Grid from "@mui/material/Grid";
+import { useMediaQuery } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -17,10 +19,14 @@ const useStyles = makeStyles((theme) => ({
 
 function BookingPaymentContainer() {
   const classes = useStyles();
+
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <>
       <Container className={classes.root}>
-        <Grid container spacing={10}>
+        <Grid container spacing={matches ? 0 : 10} rowSpacing={matches ? 3 : 0}>
           <Grid item xs={12} md={7}>
             <PaymentForm />
           </Grid>

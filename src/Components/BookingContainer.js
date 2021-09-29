@@ -12,6 +12,9 @@ import CardHorizontalUi from "../ui/CardHorizontalUi";
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: "3rem",
+    [theme.breakpoints.down("md")]: {
+      padding: "2rem",
+    },
   },
 }));
 

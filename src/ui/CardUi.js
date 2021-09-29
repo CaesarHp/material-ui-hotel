@@ -13,21 +13,11 @@ import { Grid } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 350,
-    width: 320,
     borderRadius: 0,
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
-    },
   },
   media: {
-    height: 250,
-    [theme.breakpoints.down("sm")]: {
-      height: 150,
-    },
-    // [theme.breakpoints.down("xs")]: {
-    //   height: 100,
-    // },
+    height: 0,
+    padding: "15rem 3.5rem 0 3.5rem",
   },
   btnContainer: {
     padding: "1rem",
@@ -46,25 +36,44 @@ export default function CardUi({ name, number, size, view, price, img, link }) {
         <Grid item>
           <Card className={classes.root}>
             <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image={img}
-                title="Hotel Room"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  {name}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Max Occupancy: {number} Guests
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Size: {size} Sqf
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  View: {view}
-                </Typography>
-              </CardContent>
+              <Grid container>
+                <Grid item xs={12}>
+                  <CardMedia
+                    className={classes.media}
+                    image={img}
+                    title="Hotel Room"
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      {name}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      Max Occupancy: {number} Guests
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      Size: {size} Sqf
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      View: {view}
+                    </Typography>
+                  </CardContent>
+                </Grid>
+              </Grid>
             </CardActionArea>
             <CardActions className={classes.btnContainer}>
               <Button

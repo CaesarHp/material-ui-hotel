@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     [theme.breakpoints.down("sm")]: {
       textAlign: "center",
-      width: "80%",
+      width: "90%",
     },
   },
   title: {

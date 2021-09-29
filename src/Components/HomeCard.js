@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     width: "50%",
     marginBottom: theme.spacing(5),
+    [theme.breakpoints.down("md")]: {
+      width: "80%",
+    },
   },
   title: {
     color: theme.palette.grey[200],

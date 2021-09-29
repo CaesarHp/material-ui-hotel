@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Grid } from "@material-ui/core";
+import Grid from "@mui/material/Grid";
 import { Typography } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.grey[900],
     [theme.breakpoints.down("sm")]: {
       textAlign: "center",
+      padding: "4rem 0",
     },
   },
   title: {
@@ -91,7 +92,12 @@ function Footer() {
   return (
     <>
       <div className={classes.root}>
-        <Grid container spacing={matches ? 6 : 0}>
+        <Grid
+          container
+          justifyContent="center"
+          rowSpacing={matches ? 4 : 0}
+          columnSpacing={matches ? 0 : 4}
+        >
           <Grid item xs={12} md={4}>
             <Grid container justifyContent="center">
               <Grid item className={classes.aboutContainer}>
