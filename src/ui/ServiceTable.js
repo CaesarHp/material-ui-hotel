@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Grid } from "@material-ui/core";
+import Grid from "@mui/material/Grid";
 import { Typography } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -12,14 +12,7 @@ import CoffeeMakerIcon from "@mui/icons-material/CoffeeMaker";
 import LocalBarIcon from "@mui/icons-material/LocalBar";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-  },
-  container1: {
-    display: "flex",
-    marginBottom: theme.spacing(2),
-  },
-  container2: {
+  container: {
     display: "flex",
   },
   icon: {
@@ -35,52 +28,46 @@ function ServiceTable() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <Grid container direction="column">
-        <Grid item>
-          <div className={classes.container1}>
+    <>
+      <Grid container rowSpacing={2}>
+        <Grid item xs={12} sm={6} md={4}>
+          <div className={classes.container}>
             <WifiIcon className={classes.icon} />
             <Typography className={classes.title}>High Speed Wifi</Typography>
           </div>
         </Grid>
-        <Grid item>
-          <div className={classes.container2}>
-            <RoomServiceIcon className={classes.icon} />
-            <Typography className={classes.title}>Room Service</Typography>
-          </div>
-        </Grid>
-      </Grid>
-
-      <Grid container direction="column">
-        <Grid item>
-          <div className={classes.container1}>
+        <Grid item xs={12} sm={6} md={4}>
+          <div className={classes.container}>
             <FlightIcon className={classes.icon} />
             <Typography className={classes.title}>Airport Pickup</Typography>
           </div>
         </Grid>
-        <Grid item>
-          <div className={classes.container2}>
-            <CoffeeMakerIcon className={classes.icon} />
-            <Typography className={classes.title}>Coffee Maker</Typography>
+        <Grid item xs={12} sm={6} md={4}>
+          <div className={classes.container}>
+            <RoomServiceIcon className={classes.icon} />
+            <Typography className={classes.title}>Room Service</Typography>
           </div>
         </Grid>
-      </Grid>
-
-      <Grid container direction="column">
-        <Grid item>
-          <div className={classes.container1}>
+        <Grid item xs={12} sm={6} md={4}>
+          <div className={classes.container}>
             <PhoneIcon className={classes.icon} />
             <Typography className={classes.title}>World Wide Call</Typography>
           </div>
         </Grid>
-        <Grid item>
-          <div className={classes.container2}>
+        <Grid item xs={12} sm={6} md={4}>
+          <div className={classes.container}>
+            <CoffeeMakerIcon className={classes.icon} />
+            <Typography className={classes.title}>Coffee Maker</Typography>
+          </div>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <div className={classes.container}>
             <LocalBarIcon className={classes.icon} />
             <Typography className={classes.title}>Mini Bar</Typography>
           </div>
         </Grid>
       </Grid>
-    </div>
+    </>
   );
 }
 

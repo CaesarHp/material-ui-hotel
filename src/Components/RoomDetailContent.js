@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Grid } from "@material-ui/core";
+import Grid from "@mui/material/Grid";
 import { Typography } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -12,17 +12,13 @@ import PolicyAccordion from "../ui/PolicyAccordion";
 const useStyles = makeStyles((theme) => ({
   root: {
     marginBottom: theme.spacing(6),
-  },
-  marinBottomContainer: {
-    marginBottom: theme.spacing(6),
-  },
-  fullWidth: {
-    width: "100%",
-    marginBottom: theme.spacing(6),
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: theme.spacing(2),
+    },
   },
   img: {
     width: "100%",
-    height: "auto",
+    height: "100%",
   },
   title: {
     color: theme.palette.grey[900],
@@ -39,14 +35,14 @@ function RoomDetailContent({ number, size, view, bed, img }) {
 
   return (
     <div className={classes.root}>
-      <Grid container direction="column">
-        <Grid item>
-          <Grid container>
-            <Grid item className={classes.marinBottomContainer}>
+      <Grid container rowSpacing={6}>
+        <Grid item xs={12}>
+          <Grid container rowSpacing={6}>
+            <Grid item xs={12}>
               <img alt="room" src={img} className={classes.img} />
             </Grid>
 
-            <Grid item className={classes.fullWidth}>
+            <Grid item xs={12}>
               <Typography variant="h5" component="h2" className={classes.title}>
                 Room Type
               </Typography>
@@ -55,60 +51,42 @@ function RoomDetailContent({ number, size, view, bed, img }) {
           </Grid>
         </Grid>
 
-        <Grid item>
-          <Grid container className={classes.marinBottomContainer}>
-            <Grid item>
-              <Typography variant="h5" component="h2" className={classes.title}>
-                Room Description
-              </Typography>
-              <Typography variant="body2" className={classes.body}>
-                This 5-star room, part of the SOHO Hotel family, combines
-                elegance with modern amenities. It is located in the centre of
-                the financial district and 1.3 km from the CN Tower. It features
-                a full-service spa and spacious rooms with stunning Toronto
-                skyline views. A flat-screen TV, free Wi-Fi and an iPod dock are
-                standard in each luxurious room at SOHO Hotel. The spacious
-                bathroom has stone-topped vanities and an in-mirror TV. Free
-                bottled water and tea and coffee-making facilities are included.
-                Soaring 31 stories atop Toronto’s glittering skyline, Iridium
-                Spa promises a transformative journey created to dazzle the
-                senses and celebrate the mind, body and soul. The 15,000
-                square-foot sanctuary in the sky invites guests to renew and
-                recharge with ultra-luxurious amenities featuring the Iridium
-                Lounge, 11 treatment rooms, including two couples rooms,
-                expansive women’s and men’s change rooms with separate steam
-                rooms and a full-service nail salon.
-              </Typography>
-            </Grid>
-          </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h5" component="h2" className={classes.title}>
+            Room Description
+          </Typography>
+          <Typography variant="body2" className={classes.body}>
+            This 5-star room, part of the SOHO Hotel family, combines elegance
+            with modern amenities. It is located in the centre of the financial
+            district and 1.3 km from the CN Tower. It features a full-service
+            spa and spacious rooms with stunning Toronto skyline views. A
+            flat-screen TV, free Wi-Fi and an iPod dock are standard in each
+            luxurious room at SOHO Hotel. The spacious bathroom has stone-topped
+            vanities and an in-mirror TV. Free bottled water and tea and
+            coffee-making facilities are included. Soaring 31 stories atop
+            Toronto’s glittering skyline, Iridium Spa promises a transformative
+            journey created to dazzle the senses and celebrate the mind, body
+            and soul. The 15,000 square-foot sanctuary in the sky invites guests
+            to renew and recharge with ultra-luxurious amenities featuring the
+            Iridium Lounge, 11 treatment rooms, including two couples rooms,
+            expansive women’s and men’s change rooms with separate steam rooms
+            and a full-service nail salon.
+          </Typography>
         </Grid>
 
-        <Grid item>
-          <Grid
-            container
-            direction="column"
-            className={classes.marinBottomContainer}
-          >
-            <Grid item>
-              <Typography variant="h5" component="h2" className={classes.title}>
-                Services
-              </Typography>
-            </Grid>
-            <Grid item>
-              <ServiceTable />
-            </Grid>
-          </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h5" component="h2" className={classes.title}>
+            Services
+          </Typography>
+
+          <ServiceTable />
         </Grid>
 
-        <Grid item>
-          <Grid container className={classes.marinBottomContainer}>
-            <Grid item>
-              <Typography variant="h5" component="h2" className={classes.title}>
-                Policy
-              </Typography>
-              <PolicyAccordion />
-            </Grid>
-          </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h5" component="h2" className={classes.title}>
+            Policy
+          </Typography>
+          <PolicyAccordion />
         </Grid>
       </Grid>
     </div>
