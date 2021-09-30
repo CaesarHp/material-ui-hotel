@@ -12,14 +12,14 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minHeight: "90vh",
+    minHeight: "80vh",
     background: `url(${hotelRoom1})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     backgroundPosition: "center",
   },
   container: {
-    height: "90vh",
+    height: "80vh",
     display: "flex",
     alignItems: "center",
     [theme.breakpoints.down("sm")]: {

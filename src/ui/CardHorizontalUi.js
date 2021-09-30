@@ -105,16 +105,18 @@ export default function CardHorizontalUi({
               </Grid>
 
               <Grid item>
-                <Button
-                  variant="contained"
-                  size="medium"
-                  color="primary"
-                  disableElevation
-                  onClick={selectRoomHandler}
-                  className={classes.btn}
-                >
-                  Select
-                </Button>
+                {back ? null : (
+                  <Button
+                    variant="contained"
+                    size="medium"
+                    color="primary"
+                    disableElevation
+                    onClick={selectRoomHandler}
+                    className={classes.btn}
+                  >
+                    Select
+                  </Button>
+                )}
                 <Button
                   size="medium"
                   color="primary"
