@@ -7,7 +7,6 @@ import CardUi from "../ui/CardUi";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
 import "slick-carousel/slick/slick.css";
@@ -49,6 +48,10 @@ const useStyles = makeStyles((theme) => ({
     top: "50%",
     right: "-5%",
     zIndex: 1600,
+
+    [theme.breakpoints.down("sm")]: {
+      right: "-10%",
+    },
   },
   arrowPrev: {
     color: "white",
@@ -56,7 +59,12 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
     top: "50%",
     left: "-5%",
+    transform: "scaleX(-1)",
     zIndex: 1600,
+
+    [theme.breakpoints.down("sm")]: {
+      left: "-10%",
+    },
   },
 }));
 
@@ -76,7 +84,7 @@ export default function HomeCard() {
   const PrevArrow = ({ onClick }) => {
     return (
       <div className={classes.arrowPrev} onClick={onClick}>
-        <ArrowBackIosIcon />
+        <ArrowForwardIosIcon />
       </div>
     );
   };

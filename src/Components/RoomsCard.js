@@ -4,9 +4,6 @@ import { useSelector } from "react-redux";
 import { Container } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
-
 import CardUi from "../ui/CardUi";
 import Sort from "../ui/Sort";
 
@@ -58,13 +55,6 @@ function RoomsCard() {
               />
             </Grid>
           ))}
-        </Grid>
-        <Grid container justifyContent="center">
-          <Grid item>
-            <Stack spacing={4}>
-              <Pagination count={5} />
-            </Stack>
-          </Grid>
         </Grid>
       </Container>
     </>

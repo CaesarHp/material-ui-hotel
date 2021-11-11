@@ -104,6 +104,11 @@ const dataSlice = createSlice({
         state.checkInInfo.splice(0, 1, action.payload);
       }
     },
+
+    clearRoom(state, action) {
+      state.selectedRoom = [];
+      state.checkInInfo = [];
+    },
   },
 });
 
